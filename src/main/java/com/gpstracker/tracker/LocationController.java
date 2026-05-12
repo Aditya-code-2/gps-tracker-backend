@@ -11,6 +11,7 @@ public class LocationController {
     @Autowired
     private LocationRepository repo;
 
+    // SAVE LOCATION
     @PostMapping
     public Location saveLocation(
             @RequestBody Location location
@@ -20,6 +21,7 @@ public class LocationController {
 
     }
 
+    // GET LOCATION BY DEVICE ID
     @GetMapping("/{deviceId}")
     public Location getLocation(
             @PathVariable String deviceId
@@ -28,6 +30,14 @@ public class LocationController {
         return repo.findTopByDeviceIdOrderByIdDesc(
                 deviceId
         );
+
+    }
+
+    // TEST API
+    @GetMapping("/test")
+    public String test() {
+
+        return "Backend Working Successfully";
 
     }
 
